@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
-import MapContainer from './components/map-container/MapContainer';
+import MapContainer from './MapContainer';
 
 ReactDOM.render(<MapContainer />, document.getElementById('root'));
 
