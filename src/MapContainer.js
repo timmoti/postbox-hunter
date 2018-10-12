@@ -135,8 +135,9 @@ class MapContainer extends Component {
             marker={this.state.activeMarker}
             visible={this.state.showInfoWindow}
             onOpen={this.handleOnOpen}
+            maxWidth="200"
           >
-            <Typography variant="h4" component="h4">
+            <Typography variant="h5" component="h5">
               {selectedPlace.name}
             </Typography>
             <Typography variant="subtitle2" component="h4">
@@ -146,7 +147,7 @@ class MapContainer extends Component {
               {selectedPlace.title}
             </Typography>
             {Object.keys(currentLocation).length !== 0 && (
-              <Typography variant="h5" component="p">
+              <Typography variant="h6" component="p">
                 {distanceFromCurrentLocation}
               </Typography>
             )}
