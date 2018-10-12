@@ -3,9 +3,13 @@ import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import { makeCancelable } from './lib/cancelablePromise';
 import data from './data/mailing_locations_list.json';
 import bluedot from './images/Location_dot_blue.png';
+import { getDistance } from './lib/distanceBetweenTwoPointsLatLong';
+// import SearchBar from './components/search-bar/SearchBar';
+// import CurrentLocationButton from './CurrentLocationButton';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
 
 class MapContainer extends Component {
   constructor(props) {
@@ -15,7 +19,8 @@ class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       currentLocation: {},
-      distanceFromCurrentLocation: ''
+      distanceFromCurrentLocation: '',
+      directionsURL: ''
     };
   }
 
@@ -27,15 +32,17 @@ class MapContainer extends Component {
         })
       );
 
-      this.geoPromise.promise.then(pos => {
-        const coords = pos.coords;
-        this.setState({
-          currentLocation: {
-            lat: coords.latitude,
-            lng: coords.longitude
-          }
-        });
-      });
+      this.geoPromise.promise
+        .then(pos => {
+          const coords = pos.coords;
+          this.setState({
+            currentLocation: {
+              lat: coords.latitude,
+              lng: coords.longitude
+            }
+          });
+        })
+        .catch(e => e);
     }
   };
 
@@ -54,61 +61,101 @@ class MapContainer extends Component {
       activeMarker: marker,
       showInfoWindow: true
     });
+
+    this.setState(prevState => ({
+      distanceFromCurrentLocation: getDistance(
+        prevState.currentLocation.lat,
+        prevState.currentLocation.lng,
+        prevState.selectedPlace.position.lat,
+        prevState.selectedPlace.position.lng
+      )
+    }));
+  };
+
+  getDirectionsURL = (currentLat, currentLng, destLat, destLng) => {
+    return `https://www.google.com/maps/dir/?api=1&origin=${currentLat},${currentLng}&destination=${destLat},${destLng}`;
+  };
+
+  handleOnOpen = () => {
+    this.setState(prevState => ({
+      directionsURL: this.getDirectionsURL(
+        prevState.currentLocation.lat,
+        prevState.currentLocation.lng,
+        +prevState.selectedPlace.position.lat,
+        +prevState.selectedPlace.position.lng
+      )
+    }));
   };
 
   render() {
+    const {
+      currentLocation,
+      selectedPlace,
+      distanceFromCurrentLocation,
+      directionsURL
+    } = this.state;
     return (
-      <Map
-        centerAroundCurrentLocation
-        google={this.props.google}
-        onClick={this.onMapClick}
-        zoom={18}
-        initialCenter={{
-          lat: 1.352866,
-          lng: 103.816798
-        }}
-      >
-        <Marker
-          position={{
-            lat: this.state.currentLocation.lat,
-            lng: this.state.currentLocation.lng
+      <div>
+        <Map
+          centerAroundCurrentLocation
+          google={this.props.google}
+          onClick={this.onMapClick}
+          zoom={18}
+          initialCenter={{
+            lat: 1.281306,
+            lng: 103.864029
           }}
-          title={'Current Location'}
-          icon={bluedot}
-        />
-        {data.map((location, index) => {
-          return (
-            <Marker
-              key={index}
-              onClick={this.onMarkerClick}
-              title={location.type}
-              position={{ lat: location.lat, lng: location.long }}
-              name={location.location}
-              address={location.address}
-            />
-          );
-        })}
-
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showInfoWindow}
         >
-          <Paper>
+          {/* <CurrentLocationButton
+          currentLocation={this.state.currentLocation}
+          getCurrentLocation={this.getCurrentLocation}
+        /> */}
+
+          <Marker
+            position={{
+              lat: currentLocation.lat,
+              lng: currentLocation.lng
+            }}
+            title={'Current Location'}
+            icon={bluedot}
+          />
+          {data.map((location, index) => {
+            return (
+              <Marker
+                key={index}
+                onClick={this.onMarkerClick}
+                title={location.type}
+                position={{ lat: location.lat, lng: location.long }}
+                name={location.location}
+                address={location.address}
+              />
+            );
+          })}
+
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showInfoWindow}
+            onOpen={this.handleOnOpen}
+          >
             <Typography variant="h4" component="h4">
-              {this.state.selectedPlace.name}
+              {selectedPlace.name}
             </Typography>
             <Typography variant="subtitle2" component="h4">
-              {this.state.selectedPlace.address}
+              {selectedPlace.address}
             </Typography>
             <Typography variant="subtitle1" component="p">
-              {this.state.selectedPlace.title}
+              {selectedPlace.title}
             </Typography>
-            <Typography variant="h5" component="p">
-              {this.state.distanceFromCurrent}
-            </Typography>
-          </Paper>
-        </InfoWindow>
-      </Map>
+            {Object.keys(currentLocation).length !== 0 && (
+              <Typography variant="h5" component="p">
+                {distanceFromCurrentLocation}
+              </Typography>
+            )}
+            <a href={directionsURL}>Get directions</a>
+          </InfoWindow>
+          {/* <SearchBar /> */}
+        </Map>
+      </div>
     );
   }
 }
