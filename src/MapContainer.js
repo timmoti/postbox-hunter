@@ -4,12 +4,11 @@ import { makeCancelable } from './lib/cancelablePromise';
 import data from './data/mailing_locations_list.json';
 import bluedot from './images/Location_dot_blue.png';
 import { getDistance } from './lib/distanceBetweenTwoPointsLatLong';
+
 // import SearchBar from './components/search-bar/SearchBar';
 // import CurrentLocationButton from './CurrentLocationButton';
 
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
 
 class MapContainer extends Component {
   constructor(props) {
@@ -153,7 +152,6 @@ class MapContainer extends Component {
             )}
             <a href={directionsURL}>Get directions</a>
           </InfoWindow>
-          {/* <SearchBar /> */}
         </Map>
       </div>
     );
