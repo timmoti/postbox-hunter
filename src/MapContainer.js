@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import { makeCancelable } from './lib/cancelablePromise';
 import data from './data/mailing_locations_list.json';
-import bluedot from './images/Location_dot_blue.png';
+import reddot from './images/red-dot-md.png';
 import { getDistance } from './lib/distanceBetweenTwoPointsLatLong';
+import post from './images/Envelope.png';
 
 // import SearchBar from './components/search-bar/SearchBar';
-// import CurrentLocationButton from './CurrentLocationButton';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -94,29 +94,24 @@ class MapContainer extends Component {
       directionsURL
     } = this.state;
     return (
-      <div>
+      <div className="map-container">
         <Map
           centerAroundCurrentLocation
           google={this.props.google}
           onClick={this.onMapClick}
-          zoom={18}
+          zoom={17}
           initialCenter={{
             lat: 1.281306,
             lng: 103.864029
           }}
         >
-          {/* <CurrentLocationButton
-          currentLocation={this.state.currentLocation}
-          getCurrentLocation={this.getCurrentLocation}
-        /> */}
-
           <Marker
             position={{
               lat: currentLocation.lat,
               lng: currentLocation.lng
             }}
             title={'Current Location'}
-            icon={bluedot}
+            icon={reddot}
           />
           {data.map((location, index) => {
             return (
@@ -127,6 +122,7 @@ class MapContainer extends Component {
                 position={{ lat: location.lat, lng: location.long }}
                 name={location.location}
                 address={location.address}
+                icon={post}
               />
             );
           })}
