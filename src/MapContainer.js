@@ -96,7 +96,6 @@ class MapContainer extends Component {
     return (
       <div className="map-container">
         <h1>Where To Mail</h1>
-        {/* <SearchBar /> */}
         <Map
           centerAroundCurrentLocation
           google={this.props.google}
@@ -106,7 +105,6 @@ class MapContainer extends Component {
             lat: 1.281306,
             lng: 103.864029
           }}
-          // style={{ height: '100%', width: '100%', position: 'fixed' }}
         >
           <Marker
             position={{
