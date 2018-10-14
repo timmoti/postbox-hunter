@@ -44,8 +44,8 @@ This project is licensed under the MIT license
 ## Sidenote
 This project was borne out of a frustration of not being able to find a nearby post box or post office when one is needed. 
 
-Google maps was my first port of call but was surprised that while post office locations can be found easily, post boxes locations aren't.
+Google maps was my first port of call but was surprised that while post office locations can be found easily, post box locations aren't.
 
-Best alternative was from the Singpost website which although contains information on all post boxes and post offices in Singapore, it does not detect current location and does not allow one to select both post box and post office locations. 
+Best alternative was from the Singpost website which although contains information on all post boxes and post offices in Singapore, does not detect current location and does not allow one to select both post box and post office locations. 
 
  
