@@ -105,6 +105,7 @@ class MapContainer extends Component {
             lat: 1.281306,
             lng: 103.864029
           }}
+          gestureHandling="greedy"
         >
           <Marker
             position={{
