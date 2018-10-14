@@ -9,7 +9,7 @@ A mobile-friendly React app that helps you locate the nearest post box or post o
 
 Play around with the app here at https://where-to-mail.herokuapp.com/
 
-![where_to_mail_demo](./images/where_to_mail_demo.png)
+![where_to_mail_demo](where_to_mail_demo.png)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Deployment for notes on how to deploy the project on a live system.
