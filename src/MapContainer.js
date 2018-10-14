@@ -5,6 +5,7 @@ import data from './data/mailing_locations_list.json';
 import reddot from './images/red-dot-md.png';
 import { getDistance } from './lib/distanceBetweenTwoPointsLatLong';
 import post from './images/Envelope.png';
+import './MapContainer.css';
 
 // import SearchBar from './components/search-bar/SearchBar';
 
@@ -106,6 +107,7 @@ class MapContainer extends Component {
             lng: 103.864029
           }}
           gestureHandling="greedy"
+          className="map"
         >
           <Marker
             position={{
@@ -135,17 +137,11 @@ class MapContainer extends Component {
             onOpen={this.handleOnOpen}
             maxWidth="200"
           >
-            <Typography variant="h5" component="h5">
-              {selectedPlace.name}
-            </Typography>
-            <Typography variant="subtitle2" component="h4">
-              {selectedPlace.address}
-            </Typography>
-            <Typography variant="subtitle1" component="p">
-              {selectedPlace.title}
-            </Typography>
+            <Typography variant="h5">{selectedPlace.name}</Typography>
+            <Typography variant="subtitle2">{selectedPlace.address}</Typography>
+            <Typography variant="subtitle1">{selectedPlace.title}</Typography>
             {Object.keys(currentLocation).length !== 0 && (
-              <Typography variant="h6" component="p">
+              <Typography variant="h6">
                 {distanceFromCurrentLocation}
               </Typography>
             )}
