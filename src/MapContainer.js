@@ -97,6 +97,7 @@ class MapContainer extends Component {
     return (
       <div className="map-container">
         <h1>Where To Mail</h1>
+        <p id="tagline">Find nearby post box and post office</p>
         <Map
           centerAroundCurrentLocation
           google={this.props.google}
