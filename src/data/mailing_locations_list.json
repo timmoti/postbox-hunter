@@ -452,7 +452,7 @@
     "location": "Bishan Post Office",
     "lat": "1.350102",
     "long": "103.850733",
-    "address": "51 Bishan Street 13, Singapore 579799"
+    "address": "51 Bishan Street 13, #01-03 Bishan Community Club, Singapore 579799"
   },
   {
     "type": "Posting Box",
@@ -5640,13 +5640,6 @@
     "lat": "1.3274699",
     "long": "103.9339981",
     "address": "Blk 218 Bedok North St.1 #01-49, Singapore 460218"
-  },
-  {
-    "type": "Post Office",
-    "location": "Bishan Post Office",
-    "lat": "1.34926",
-    "long": "103.8499985",
-    "address": "51 Bishan Street 13 #01-03 Bishan Community Club, Singapore 579799"
   },
   {
     "type": "Post Office",
