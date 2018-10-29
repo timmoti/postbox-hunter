@@ -7,7 +7,7 @@ A mobile-friendly React app that helps you locate the nearest post box or post o
 - Info Window indicates distance of mailing location from current location
 - Link to get directions opens in Google maps application on mobile devices or Google maps on the browser.
 
-Play around with the app here at https://where-to-mail.herokuapp.com/
+Play around with the app here at https://postbox-hunter.herokuapp.com/
 
 ![postbox_hunter_demo](where_to_mail_demo.gif)
 
