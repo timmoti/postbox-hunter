@@ -1,4 +1,4 @@
-# Where To Mail
+# Postbox Hunter
 
 A mobile-friendly React app that helps you locate the nearest post box or post office based on your current location (Singapore only). Notable features include:
 
@@ -9,7 +9,7 @@ A mobile-friendly React app that helps you locate the nearest post box or post o
 
 Play around with the app here at https://where-to-mail.herokuapp.com/
 
-![where_to_mail_demo](where_to_mail_demo.gif)
+![postbox_hunter_demo](where_to_mail_demo.gif)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Deployment for notes on how to deploy the project on a live system.
@@ -19,7 +19,7 @@ Here are the steps to download a local copy of the app
 
 ```
 1. Fork the repo.
-2. $ git clone https://github.com/timmoti/where-to-mail.git
+2. $ git clone https://github.com/timmoti/postbox-hunter.git
 3. $ npm install 
 ```
 
@@ -41,7 +41,7 @@ This project is licensed under the MIT license
 - Gordon Song (For imparting precious knowledge on React App development)
 - Muhammad Yamin (For offering troubleshooting advice when needed)
 
-## Sidenote
+## Motivation
 This project was borne out of a frustration of not being able to find a nearby post box or post office when one is needed. 
 
 Google maps was my first port of call but was surprised that while post office locations can be found easily, post box locations aren't.
